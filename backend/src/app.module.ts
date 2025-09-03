@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DevService } from './data/services/dev.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ProductModule } from './product/product.module';
+
 
 @Module({
   imports: [
@@ -12,6 +14,7 @@ import { AppService } from './app.service';
     TypeOrmModule.forRootAsync({
       useClass: DevService,
     }),
+    ProductModule,
 
   ],
   controllers: [AppController],
