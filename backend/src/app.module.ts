@@ -5,6 +5,7 @@ import { DevService } from './data/services/dev.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
+import { CategoryModule } from './category/category.module';
 
 
 @Module({
@@ -15,6 +16,7 @@ import { ProductModule } from './product/product.module';
       useClass: DevService,
     }),
     ProductModule,
+    CategoryModule,
 
   ],
   controllers: [AppController],

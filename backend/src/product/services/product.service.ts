@@ -2,17 +2,20 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { DeleteResult, ILike, Repository } from "typeorm";
 import { Product } from "../entities/product.entity";
+import { CategoryService } from "../../category/services/category.service";
 
 @Injectable()
 export class ProductService {
   constructor(
     @InjectRepository(Product)
     private productRepository: Repository<Product>,
+    private categoryService: CategoryService
   ) { }
 
   async findAll(): Promise<Product[]> {
     return await this.productRepository.find({
       relations: {
+        category: true
       }
     });
   }
@@ -24,6 +27,7 @@ export class ProductService {
         id
       },
       relations: {
+        category: true
       }
     });
 
@@ -39,17 +43,20 @@ export class ProductService {
         name: ILike(`%${name}%`)
       },
       relations: {
+        category: true
       }
     })
   }
 
   async create(product: Product): Promise<Product> {
+    await this.categoryService.findById(product.category.id)
     return await this.productRepository.save(product);
   }
 
   async update(id: number, data: Partial<Product>): Promise<Product> {
 
     const product = await this.findById(id);
+    if (data.category) await this.categoryService.findById(data.category.id);
     return await this.productRepository.save({ ...product, ...data });
 
   }
