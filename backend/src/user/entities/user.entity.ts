@@ -24,4 +24,7 @@ export class User {
     @Column({ length: 5000, nullable: true })
     photo: string
 
+    @OneToMany(() => Product, (product) => product.user)
+    product: Product[]
+
 }
