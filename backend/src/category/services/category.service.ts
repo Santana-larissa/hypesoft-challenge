@@ -13,6 +13,7 @@ export class CategoryService {
   async findAll(): Promise<Category[]> {
     return await this.categoryRepository.find({
       relations: {
+        product: true
       }
     });
   }
@@ -24,6 +25,7 @@ export class CategoryService {
         id
       },
       relations: {
+        product: true
       }
     });
 
