@@ -2,13 +2,13 @@ import { Controller, HttpCode, HttpStatus, Post, UseGuards, Request } from '@nes
 import { LocalAuthGuard } from '../guard/local-auth.guard';
 import { AuthService } from '../services/auth.service';
 
-@Controller("/auth")
+@Controller('/sign-in')
 export class AuthController {
     constructor(private authService: AuthService) { }
 
     @UseGuards(LocalAuthGuard)
     @HttpCode(HttpStatus.OK)
-    @Post('/login')
+    @Post()
     async login(@Request() req: any): Promise<any> {
         console.log(req.user);
         return this.authService.login(req.user);
