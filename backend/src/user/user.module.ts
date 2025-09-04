@@ -4,14 +4,16 @@ import { UserService } from './services/user.service';
 import { UserController } from './controller/user.controller';
 import { User } from './entities/user.entity';
 import { AuthModule } from '../auth/auth.module';
+import { Bcrypt } from '../auth/bcrypt/bcrypt';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([User]),
         forwardRef(() => AuthModule),
     ],
-    providers: [UserService],
+    providers: [UserService, Bcrypt],
     controllers: [UserController],
-    exports: [UserService],
+    exports: [TypeOrmModule, UserService],
 })
 export class UserModule { }
+

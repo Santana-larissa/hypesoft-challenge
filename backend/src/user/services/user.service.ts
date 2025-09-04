@@ -16,7 +16,7 @@ export class UserService {
         private bcrypt: Bcrypt
     ) { }
 
-    async findByUser(email: string): Promise<User | null> {
+    async findByEmail(email: string): Promise<User | null> {
         return await this.userRepository.findOne({
             where: {
                 email: email
@@ -46,7 +46,7 @@ export class UserService {
 
     async create(user: User): Promise<User> {
 
-        const searchUser = await this.findByUser(user.email);
+        const searchUser = await this.findByEmail(user.email);
 
         if (searchUser)
             throw new HttpException("O Usuario já existe!", HttpStatus.BAD_REQUEST);
