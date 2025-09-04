@@ -30,10 +30,10 @@ export class ProductController {
     return this.productService.create(product);
   }
 
-  @Put()
+  @Put('/:id')
   @HttpCode(HttpStatus.OK)
-  update(@Body() product: Product): Promise<Product> {
-    return this.productService.update(product);
+  update(@Param('id', ParseIntPipe) id: number, @Body() data: Partial<Product>): Promise<Product> {
+    return this.productService.update(id, data);
   }
 
   @Delete('/:id')

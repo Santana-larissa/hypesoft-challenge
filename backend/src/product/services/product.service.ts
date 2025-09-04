@@ -47,10 +47,10 @@ export class ProductService {
     return await this.productRepository.save(product);
   }
 
-  async update(product: Product): Promise<Product> {
+  async update(id: number, data: Partial<Product>): Promise<Product> {
 
-    await this.findById(product.id);
-    return await this.productRepository.save(product);
+    const product = await this.findById(id);
+    return await this.productRepository.save({ ...product, ...data });
 
   }
 
