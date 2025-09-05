@@ -1,6 +1,20 @@
 version: "3.9"
 
 services:
+  db:
+    image: mysql:8
+    container_name: hypesoft-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_hypesoft
+      MYSQL_USER: hype
+      MYSQL_PASSWORD: hype123
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
   backend:
     build: ./backend
     container_name: hypesoft-backend
@@ -16,19 +30,20 @@ services:
       - ./backend:/app
       - /app/node_modules
 
-  db:
-    image: mysql:8
-    container_name: hypesoft-mysql
+  frontend:
+    build: ./frontend
+    container_name: hypesoft-frontend
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: db_hypesoft
-      MYSQL_USER: hype
-      MYSQL_PASSWORD: hype123
+    env_file:
+      - ./frontend/.env
     ports:
-      - "3307:3306"
+      - "5173:5173"
+    depends_on:
+      - backend
     volumes:
-      - db_data:/var/lib/mysql
+      - ./frontend:/app
+      - /app/node_modules
 
 volumes:
   db_data:

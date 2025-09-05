@@ -5,7 +5,6 @@ import type { CategoryInput } from "types/category";
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
-// import { Textarea } from "@components/ui/textarea"; // se não tiver, use <textarea className="...">
 
 const schema = z.object({
   name: z.string().min(2, "Informe o nome"),

@@ -27,7 +27,7 @@ export function RegisterForm() {
       registerApi(name, email, password),
     onSuccess: ({ user, token }) => {
       setSession(user, token);
-      navigate("/"); // loga e leva pra home
+      navigate("/");
     },
   });
 
