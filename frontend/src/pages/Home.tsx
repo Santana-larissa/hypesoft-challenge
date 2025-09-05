@@ -1,6 +1,6 @@
 import { useAuthStore } from "@stores/authStore";
 import { Button } from "@components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Home() {
   const user = useAuthStore((s) => s.user);
@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <div className="min-h-screen grid place-items-center p-6 text-center space-y-4">
       <h1 className="text-2xl font-semibold">Bem-vindo{user ? `, ${user.name}` : ""}!</h1>
+      <Button asChild><Link to="/categories">Ir para categorias</Link></Button>
       <Button
         variant="outline"
         onClick={() => {
