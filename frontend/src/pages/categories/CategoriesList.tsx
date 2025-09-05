@@ -24,8 +24,13 @@ export default function CategoriesList() {
     <div className="p-6 space-y-4 max-w-3xl mx-auto">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Categorias</h1>
+      </div>
+
+      <div className="flex justify-between">
+        <Button onClick={() => nav("/home")}>Voltar</Button>
         <Button onClick={() => nav("/categories/new")}>Nova categoria</Button>
       </div>
+
 
       {!data?.length ? (
         <p className="text-sm text-muted-foreground">Nenhuma categoria cadastrada.</p>

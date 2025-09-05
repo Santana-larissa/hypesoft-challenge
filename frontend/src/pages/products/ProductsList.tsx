@@ -24,6 +24,10 @@ export default function ProductsList() {
     <div className="p-6 space-y-4 max-w-5xl mx-auto">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Produtos</h1>
+      </div>
+
+      <div className="flex justify-between">
+        <Button onClick={() => nav("/home")}>Voltar</Button>
         <Button onClick={() => nav("/products/new")}>Novo produto</Button>
       </div>
 

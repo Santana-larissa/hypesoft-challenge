@@ -1,7 +1,8 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getCategory, updateCategory } from "@services/categories";
 import { CategoryForm } from "@components/ui/forms/CategoryForm";
+import { Button } from "../../components/ui/button";
 
 export default function CategoryEdit() {
   const { id = "" } = useParams();
@@ -15,7 +16,7 @@ export default function CategoryEdit() {
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (input: { id: string | number; name: string; description?: string }) =>
-      updateCategory(input.id, { name: input.name}),
+      updateCategory(input.id, { name: input.name }),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["categories"] });
       qc.invalidateQueries({ queryKey: ["category", id] });
@@ -28,7 +29,11 @@ export default function CategoryEdit() {
 
   return (
     <div className="p-6 max-w-lg mx-auto space-y-4">
-      <h1 className="text-2xl font-semibold">Editar categoria</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-semibold">Editar categoria</h1>
+        <Button asChild variant="outline"><Link to={`/categories`}>Cancelar</Link></Button>
+      </div>
+
       <CategoryForm
         defaultValues={{ name: data.name }}
         submitting={isPending}
