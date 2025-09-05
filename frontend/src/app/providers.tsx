@@ -1,12 +1,9 @@
+import { ReactNode, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter } from "react-router-dom";
+import { useBootstrapAuth } from "@hooks/useBootstrapAuth";
 
-const qc = new QueryClient();
-
-export default function Providers({ children }: { children: React.ReactNode }) {
-  return (
-    <QueryClientProvider client={qc}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </QueryClientProvider>
-  );
+export function AppProviders({ children }: { children: ReactNode }) {
+  const [queryClient] = useState(() => new QueryClient());
+  useBootstrapAuth(); // inicializa sessão a partir do localStorage
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 }
