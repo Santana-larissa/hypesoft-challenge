@@ -6,6 +6,10 @@ import { ProtectedRoute } from "@lib/router/ProtectedRoute";
 import CategoriesList from "@pages/categories/CategoriesList";
 import CategoryCreate from "@pages/categories/CategoryCreate";
 import CategoryEdit from "@pages/categories/CategoryEdit";
+import ProductsList from "@pages/products/ProductsList";
+import ProductCreate from "@pages/products/ProductCreate";
+import ProductEdit from "@pages/products/ProductEdit";
+
 
 export function AppRoutes() {
   return (
@@ -46,6 +50,31 @@ export function AppRoutes() {
           element={
             <ProtectedRoute>
               <CategoryEdit />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/products"
+          element={
+            <ProtectedRoute>
+              <ProductsList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/products/new"
+          element={
+            <ProtectedRoute>
+              <ProductCreate />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/products/:id/edit"
+          element={
+            <ProtectedRoute>
+              <ProductEdit />
             </ProtectedRoute>
           }
         />

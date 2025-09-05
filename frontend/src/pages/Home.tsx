@@ -11,6 +11,8 @@ export default function Home() {
     <div className="min-h-screen grid place-items-center p-6 text-center space-y-4">
       <h1 className="text-2xl font-semibold">Bem-vindo{user ? `, ${user.name}` : ""}!</h1>
       <Button asChild><Link to="/categories">Ir para categorias</Link></Button>
+      <Button asChild className="mt-2"><Link to="/products">Ir para produtos</Link></Button>
+
       <Button
         variant="outline"
         onClick={() => {
