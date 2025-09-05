@@ -11,7 +11,7 @@ type AuthState = {
   setSession: (user: User, token: string) => void;
   clearSession: () => void;
   isAuthenticated: () => boolean;
-  hydrate: () => void; // lê do localStorage no boot
+  hydrate: () => void;
 };
 
 export const useAuthStore = create<AuthState>((set, get) => ({

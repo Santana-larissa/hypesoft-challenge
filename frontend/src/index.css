@@ -3,9 +3,8 @@
 /* Tailwind v4: variante dark por classe .dark */
 @custom-variant dark (&:is(.dark *));
 
-/* =========================
-   Design tokens (tema)
-   ========================= */
+/* Design tokens (tema) */
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -149,7 +148,4 @@ body {
   * { @apply border-border outline-ring/50; }
   body { @apply bg-background text-foreground; }
 
-  /* se quiser estilizar links globalmente, faça aqui:
-  a { @apply text-primary hover:underline; }
-  */
 }

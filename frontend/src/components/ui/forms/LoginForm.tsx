@@ -25,7 +25,7 @@ export function LoginForm() {
     mutationFn: ({ email, password }: FormData) => login(email, password),
     onSuccess: ({ user, token }) => {
       setSession(user, token);
-      navigate("/"); // rota privada (Home)
+      navigate("/");
     },
   });
 

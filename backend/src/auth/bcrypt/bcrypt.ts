@@ -9,8 +9,8 @@ export class Bcrypt {
   }
 
   async comparePassword(
-    enteredPassword: string, //senha digitada
-    storedPassword: string, //senha banco
+    enteredPassword: string,
+    storedPassword: string,
   ): Promise<boolean> {
     return await bcrypt.compare(enteredPassword, storedPassword);
   }
