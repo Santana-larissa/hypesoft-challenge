@@ -8,13 +8,27 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen grid place-items-center p-6 text-center space-y-4">
-      <h1 className="text-2xl font-semibold">Bem-vindo{user ? `, ${user.name}` : ""}!</h1>
-      <Button asChild><Link to="/categories">Ir para categorias</Link></Button>
-      <Button asChild className="mt-2"><Link to="/products">Ir para produtos</Link></Button>
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 text-center gap-6">
+     
+      <h1 className="text-4xl font-bold -mt-20 mb-4">
+        Bem-vindo{user ? `, ${user.name}` : ""}!
+      </h1>
+
+     
+      <div className="flex flex-row gap-6">
+        <Button asChild size="lg" className="px-12 py-6 text-xl">
+          <Link to="/categories">Ir para categorias</Link>
+        </Button>
+
+        <Button asChild size="lg" className="px-12 py-6 text-xl">
+          <Link to="/products">Ir para produtos</Link>
+        </Button>
+      </div>
 
       <Button
         variant="outline"
+        size="lg"
+        className="mt-4 px-8 text-lg"
         onClick={() => {
           clearSession();
           navigate("/login");

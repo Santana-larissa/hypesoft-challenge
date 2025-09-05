@@ -30,7 +30,7 @@ export default function ProductEdit() {
     <div className="p-6 max-w-2xl mx-auto space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Editar produto</h1>
-        <Button asChild variant="outline"><Link to={`/products/${id}`}>Cancelar</Link></Button>
+        <Button asChild variant="outline"><Link to={`/products`}>Cancelar</Link></Button>
       </div>
 
       <ProductForm
