@@ -21,7 +21,6 @@ Ele é composto por um **backend (NestJS + MySQL)** e um **frontend (Vite + Reac
 * **JWT** para autenticação
 * **Bcrypt** para hash de senhas
 * **Class-validator** e **Class-transformer** para validação
-* **Jest** para testes
 
 ### Frontend
 
